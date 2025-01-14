@@ -1,32 +1,33 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
 
-function ProductCard({ product }) {
-  return ( 
+const ProductCard = ({ product, addToCart }) => {
+  return (
     <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
+      <CardMedia
         component="img"
         height="200"
         image={product.image}
         alt={product.name}
-        />
-        <CardContent>
+      />
+      <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-            {product.name}
+          {product.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            {product.description}
+          {product.description}
         </Typography>
         <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
-            <Typography variant="h6" color="primary">
+          <Typography variant="h6" color="primary">
             {product.price}
-            </Typography>
-            <Button variant="contained" color="primary">
+          </Typography>
+          <Button variant="contained" color="primary" onClick={() => addToCart(product)}>
             Add to Cart
-            </Button>
+          </Button>
         </Box>
-        </CardContent>
-    </Card>)
-  }
+      </CardContent>
+    </Card>
+  );
+};
 
-  export default ProductCard;
+export default ProductCard;

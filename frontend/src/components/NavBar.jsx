@@ -4,12 +4,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ logo, navItems }) => {
+const Navbar = ({ logo, navItems, bankValue }) => {
   const [navAnchorEl, setNavAnchorEl] = useState(null);
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const navigate = useNavigate();
 
   const handleNavMenuOpen = (event) => {
     setNavAnchorEl(event.currentTarget);
@@ -25,6 +27,11 @@ const Navbar = ({ logo, navItems }) => {
 
   const handleProfileMenuClose = () => {
     setProfileAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    handleProfileMenuClose();
+    navigate('/login');
   };
 
   return (
@@ -91,8 +98,9 @@ const Navbar = ({ logo, navItems }) => {
             horizontal: 'right',
           }}
         >
+          <MenuItem disabled>Bank: ${bankValue}</MenuItem>
           <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={handleProfileMenuClose}>Logout</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>
