@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Menu, MenuItem, Avatar, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
@@ -30,45 +31,48 @@ const Navbar = ({ logo, navItems }) => {
     <AppBar position="sticky">
       <Toolbar>
         {/* Logo on the left */}
-        <Box sx={{ flexGrow: 1 }}>
-          <img src={logo} alt="Logo" style={{ height: '40px' }} />
+        <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+          <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '15px' }} />
+          {isMobile ? (
+            <>
+              <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleNavMenuOpen}>
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                anchorEl={navAnchorEl}
+                open={Boolean(navAnchorEl)}
+                onClose={handleNavMenuClose}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+              >
+                {navItems && navItems.map((item, index) => (
+                  <MenuItem key={index} onClick={handleNavMenuClose}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              {navItems && navItems.map((item, index) => (
+                <Typography key={index} variant="body1" sx={{ margin: '0 15px', cursor: 'pointer' }}>
+                  {item}
+                </Typography>
+              ))}
+            </Box>
+          )}
         </Box>
 
-        {/* Navbar Items */}
-        {isMobile ? (
-          <>
-            <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleNavMenuOpen}>
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              anchorEl={navAnchorEl}
-              open={Boolean(navAnchorEl)}
-              onClose={handleNavMenuClose}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-            >
-              {navItems && navItems.map((item, index) => (
-                <MenuItem key={index} onClick={handleNavMenuClose}>
-                  {item}
-                </MenuItem>
-              ))}
-            </Menu>
-          </>
-        ) : (
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {navItems && navItems.map((item, index) => (
-              <Typography key={index} variant="body1" sx={{ margin: '0 15px', cursor: 'pointer' }}>
-                {item}
-              </Typography>
-            ))}
-          </Box>
-        )}
+        {/* Cart Icon */}
+        <IconButton color="inherit">
+          <ShoppingCartIcon />
+        </IconButton>
 
         {/* Profile Section */}
         <IconButton onClick={handleProfileMenuOpen}>
