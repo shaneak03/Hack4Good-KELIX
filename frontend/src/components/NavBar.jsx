@@ -34,6 +34,15 @@ const Navbar = ({ logo, navItems, bankValue }) => {
     navigate('/login');
   };
 
+  const handleNavItemClick = (path) => {
+    navigate(path);
+  };
+
+  const handleProfileClick = () => {
+    handleProfileMenuClose();
+    navigate('/profile');
+  };
+
   return (
     <AppBar position="sticky">
       <Toolbar>
@@ -59,8 +68,8 @@ const Navbar = ({ logo, navItems, bankValue }) => {
                 }}
               >
                 {navItems && navItems.map((item, index) => (
-                  <MenuItem key={index} onClick={handleNavMenuClose}>
-                    {item}
+                  <MenuItem key={index} onClick={() => { handleNavItemClick(item.path); handleNavMenuClose(); }}>
+                    {item.label}
                   </MenuItem>
                 ))}
               </Menu>
@@ -68,8 +77,13 @@ const Navbar = ({ logo, navItems, bankValue }) => {
           ) : (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {navItems && navItems.map((item, index) => (
-                <Typography key={index} variant="body1" sx={{ margin: '0 15px', cursor: 'pointer' }}>
-                  {item}
+                <Typography
+                  key={index}
+                  variant="body1"
+                  sx={{ margin: '0 15px', cursor: 'pointer' }}
+                  onClick={() => handleNavItemClick(item.path)}
+                >
+                  {item.label}
                 </Typography>
               ))}
             </Box>
@@ -99,7 +113,7 @@ const Navbar = ({ logo, navItems, bankValue }) => {
           }}
         >
           <MenuItem disabled>Bank: ${bankValue}</MenuItem>
-          <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
+          <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </Toolbar>

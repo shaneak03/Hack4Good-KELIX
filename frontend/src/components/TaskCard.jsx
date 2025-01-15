@@ -1,7 +1,14 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-const TaskCard = ({ image, title, points }) => {
+const TaskCard = ({ id, image, title, points }) => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleShowMoreClick = () => {
+    navigate(`/task-detail/${id}`, { state: { id, image, title, points } });
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -18,7 +25,7 @@ const TaskCard = ({ image, title, points }) => {
           Points: {points}
         </Typography>
         <Box sx={{ mt: 2 }}>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleShowMoreClick}>
             Show More
           </Button>
         </Box>
