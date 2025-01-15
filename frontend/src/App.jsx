@@ -8,7 +8,7 @@ import ChangePassword from './pages/ChangePassword';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://ippoixgdxjmmorkzewvr.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlwcG9peGdkeGptbW9ya3pld3ZyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNjg2OTIxNywiZXhwIjoyMDUyNDQ1MjE3fQ.azOYeh3FrDwk-kLDhVOUVPj4B0G-Aob6_fsVCVtVVPg';
+const supabaseKey = '';
 
 if (!supabaseKey) {
   console.error('Supabase key is not set');
