@@ -48,7 +48,12 @@ const Navbar = ({ logo, navItems, bankValue }) => {
       <Toolbar>
         {/* Logo on the left */}
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-          <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '15px' }} />
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ height: '40px', marginRight: '15px', cursor: 'pointer' }}
+            onClick={() => navigate('/')}
+          />
           {isMobile ? (
             <>
               <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleNavMenuOpen}>

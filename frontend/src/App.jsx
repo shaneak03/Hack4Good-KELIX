@@ -8,14 +8,26 @@ import ChangePassword from './pages/ChangePassword';
 import TaskPage from './pages/TaskPage';
 import TaskDetail from './pages/TaskDetail';
 import ProfilePage from './pages/ProfilePage';
+import RequestsPage from './pages/RequestsPage';
+import UsersPage from './pages/UsersPage';
+import EditUser from './pages/EditUser';
+import AddUser from './pages/AddUser';
+import ReportsPage from './pages/ReportsPage';
+import ProductAdminPage from './pages/ProductAdminPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const navItems = [
-    { label: 'Home', path: '/' },
     { label: 'Products', path: '/products'},
     { label: 'Tasks', path: '/tasks'},
   ];
+  const navItemsAdmin = [
+    { label: 'Products', path: '/product-admin'},
+    { label: 'Tasks', path: '/tasks'},
+    { label: 'Requests', path: '/requests'},
+    { label: 'Users', path: '/users'},
+    { label: 'Reports', path: '/reports'},
+  ]
   return (
     <>
       <Router>
@@ -29,6 +41,12 @@ function App() {
               <Route path="/tasks" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItems} bankValue={300} /><TaskPage /></>} />
               <Route path="/task-detail/:id" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItems} bankValue={300} /><TaskDetail /></>} />
               <Route path="/profile" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItems} bankValue={300} /><ProfilePage /></>} />
+              <Route path="/requests" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><RequestsPage /></>} />
+              <Route path="/users" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><UsersPage /></>} />
+              <Route path="/edit-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><EditUser /></>} />
+              <Route path="/add-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><AddUser /></>} /> 
+              <Route path="/reports" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><ReportsPage /></>} />
+              <Route path="/product-admin" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><ProductAdminPage /></>} />
               {/* Add other routes here */}
             </>
           ) : (
