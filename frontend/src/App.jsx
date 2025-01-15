@@ -17,6 +17,10 @@ import ReportsPage from './pages/ReportsPage';
 import ProductAdminPage from './pages/ProductAdminPage';
 import AddProduct from './pages/AddProduct';
 import EditProduct from './pages/EditProduct';
+import TransactionHistory from './pages/TransactionHistory';
+import TaskAdminPage from './pages/TaskAdminPage';
+import EditTask from './pages/EditTask';
+
 import { supabase } from '../src/utils/supabaseClient';
 
 function App() {
@@ -36,10 +40,11 @@ function App() {
   ];
   const navItemsAdmin = [
     { label: 'Products', path: '/product-admin'},
-    { label: 'Tasks', path: '/tasks'},
+    { label: 'Tasks', path: '/tasks-admin'},
     { label: 'Requests', path: '/requests'},
     { label: 'Users', path: '/users'},
     { label: 'Reports', path: '/reports'},
+    { label: 'Transactions', path: '/transactions'},
   ]
   return (
     <>
@@ -62,6 +67,9 @@ function App() {
               <Route path="/product-admin" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><ProductAdminPage /></>} />
               <Route path="/product-add" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><AddProduct /></>} />
               <Route path="/product-edit" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><EditProduct /></>} />
+              <Route path="/transactions" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><TransactionHistory /></>} />
+              <Route path="/tasks-admin" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><TaskAdminPage /></>} />
+              <Route path="/task-edit" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} /><EditTask /></>} />
               {/* Add other routes here */}
             </>
           ) : (

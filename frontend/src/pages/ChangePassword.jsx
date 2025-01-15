@@ -32,6 +32,7 @@ const ChangePassword = () => {
         const user = users[0];
 
         // Compare the entered current password with the hashed password
+        // await bcrypt.compare(currentPassword, user.Password)
         const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.Password);
         if (!isCurrentPasswordValid) {
             console.error('Invalid current password');
