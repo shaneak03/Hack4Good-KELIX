@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
 
-const ProductCardAdmin = ({ product, addToCart }) => {
+const ProductCardAdmin = ({ product, onEdit }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -21,7 +21,7 @@ const ProductCardAdmin = ({ product, addToCart }) => {
           <Typography variant="h6" color="primary">
             {product.price}
           </Typography>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={onEdit}>
             Edit
           </Button>
         </Box>

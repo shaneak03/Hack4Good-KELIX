@@ -1,11 +1,19 @@
 import React from 'react';
 import { Box, Button, Typography, Grid, TextField } from '@mui/material';
-import ProductCardAdmin from '../components/ProductAdminCard';// Import ProductCard component
+import { useNavigate } from 'react-router-dom';
+import ProductCardAdmin from '../components/ProductAdminCard'; // Import ProductCard component
 
 const ProductAdminPage = () => {
+  const navigate = useNavigate();
+
   const handleAddProduct = () => {
-    // Logic to add a new product
-    console.log('Add product clicked');
+    // Navigate to the add product page
+    navigate('/product-add');
+  };
+
+  const handleEditProduct = (product) => {
+    // Navigate to the edit product page with the product data
+    navigate('/product-edit', { state: { product } });
   };
 
   const products = [
@@ -39,7 +47,10 @@ const ProductAdminPage = () => {
         <Grid container spacing={2} sx={{ marginTop: '20px' }}>
           {products.map((product) => (
             <Grid item key={product.id} xs={12} sm={6} md={4}>
-              <ProductCardAdmin product={{ ...product, price: `$${product.price}` }} />
+              <ProductCardAdmin 
+                product={{ ...product, price: `$${product.price}` }} 
+                onEdit={() => handleEditProduct(product)} 
+              />
             </Grid>
           ))}
         </Grid>

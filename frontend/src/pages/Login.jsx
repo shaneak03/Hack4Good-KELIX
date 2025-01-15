@@ -1,16 +1,41 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import { supabase } from '../utils/supabaseClient';
+import bcrypt from 'bcryptjs';
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle login logic here
-        onLogin();
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        // Fetch the user by username
+        const { data: users, error } = await supabase
+            .from('Personnel')
+            .select('*')
+            .eq('User_Name', username);
+
+        if (error || users.length === 0) {
+            console.error('Error fetching user:', error);
+            return;
+        }
+
+        const user = users[0];
+
+        // Compare the entered password with the hashed password
+        const isPasswordValid = await bcrypt.compare(password, user.Password);
+        if (!isPasswordValid) {
+            console.error('Invalid password');
+            return;
+        }
+
+        // Fetch the Admin value
+        const isAdmin = user.Admin;
+        console.log('isAdmin in Login:', isAdmin);
+
+        onLogin(isAdmin);
         navigate('/');
     };
 
@@ -26,7 +51,7 @@ const Login = ({ onLogin }) => {
                 <Typography variant="h4" component="h1" gutterBottom>
                     Login
                 </Typography>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLogin}>
                     <TextField
                         label="Username"
                         variant="outlined"
