@@ -1,44 +1,86 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Grid } from '@mui/material';
 import { useParams, useLocation } from 'react-router-dom';
+import { supabase } from '../utils/supabaseClient';
 
 const EditProduct = () => {
   const { id } = useParams();
   const location = useLocation();
   const product = location.state?.product;
 
-  const [productName, setProductName] = useState(product ? product.name : '');
-  const [productDescription, setProductDescription] = useState(product ? product.description : '');
-  const [productPrice, setProductPrice] = useState(product ? product.price : '');
-  const [productQuantity, setProductQuantity] = useState(product ? product.quantity : '');
-  const [productImageUrl, setProductImageUrl] = useState(product ? product.image : '');
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productPrice, setProductPrice] = useState('');
+  const [productQuantity, setProductQuantity] = useState('');
+  const [productImageUrl, setProductImageUrl] = useState('');
 
   useEffect(() => {
-    if (!product) {
-      // Fetch the product details by ID if not provided as a parameter
-      fetch(`/api/products/${id}`)
-        .then(response => response.json())
-        .then(data => {
-          setProductName(data.name);
-          setProductDescription(data.description);
-          setProductPrice(data.price);
-          setProductQuantity(data.quantity);
-          setProductImageUrl(data.image);
-        })
-        .catch(error => {
-          console.error('There was an error fetching the product!', error);
-        });
+    console.log('Product ID:', id);
+    const fetchProduct = async () => {
+      const { data, error } = await supabase
+        .from('Product')
+        .select('*')
+        .eq('Product_ID', id)
+        .single();
+
+      if (error) {
+        console.error('Error fetching product:', error);
+      } else {
+        setProductName(data.Name);
+        setProductDescription(data.Description);
+        setProductPrice(data.Points);
+        setProductQuantity(data.Available);
+        setProductImageUrl(data.Image);
+      }
+    };
+
+    if (product) {
+      setProductName(product.name);
+      setProductDescription(product.description);
+      setProductPrice(product.price ? product.price.replace('$', '') : ''); // Remove the dollar sign if it exists
+      setProductQuantity(product.quantity);
+      setProductImageUrl(product.image);
+    } else {
+      fetchProduct();
     }
   }, [id, product]);
 
-  const handleUpdateProduct = () => {
+  const handleUpdateProduct = async () => {
     // Logic to update the product
-    console.log('Product updated:', { productName, productDescription, productPrice, productQuantity, productImageUrl });
+    const { error } = await supabase
+      .from('Product')
+      .update({
+        Name: productName,
+        Description: productDescription,
+        Points: productPrice,
+        Available: productQuantity,
+        Image: productImageUrl
+      })
+      .eq('Product_ID', id);
+
+    if (error) {
+      console.error('Error updating product:', error);
+      alert('Error updating product');
+    } else {
+      console.log('Product updated:', { productName, productDescription, productPrice, productQuantity, productImageUrl });
+      alert('Product updated successfully');
+    }
   };
 
-  const handleDeleteProduct = () => {
+  const handleDeleteProduct = async () => {
     // Logic to delete a product
-    console.log('Product deleted:', { productName, productDescription, productPrice, productQuantity, productImageUrl });
+    const { error } = await supabase
+      .from('Product')
+      .delete()
+      .eq('Product_ID', id);
+
+    if (error) {
+      console.error('Error deleting product:', error);
+      alert('Error deleting product');
+    } else {
+      console.log('Product deleted:', { productName, productDescription, productPrice, productQuantity, productImageUrl });
+      alert('Product deleted successfully');
+    }
   };
 
   return (
