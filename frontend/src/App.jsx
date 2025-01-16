@@ -20,6 +20,8 @@ import EditProduct from './pages/EditProduct';
 import TransactionHistory from './pages/TransactionHistory';
 import TaskAdminPage from './pages/TaskAdminPage';
 import EditTask from './pages/EditTask';
+import AuctionPage from './pages/AuctionPage';
+import BidPage from './pages/BidPage';
 import { supabase } from '../src/utils/supabaseClient';
 
 function App() {
@@ -55,6 +57,7 @@ function App() {
   const navItems = [
     { label: 'Products', path: '/products'},
     { label: 'Tasks', path: '/tasks'},
+    { label: 'Auction', path: '/auction'},
   ];
   const navItemsAdmin = [
     { label: 'Products', path: '/product-admin'},
@@ -77,6 +80,8 @@ function App() {
               <Route path="/tasks" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><TaskPage /></>} />
               <Route path="/task-detail/:id" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><TaskDetail /></>} />
               <Route path="/profile" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><ProfilePage /></>} />
+              <Route path="/auction" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><AuctionPage /></>} />
+              <Route path="/bid" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><BidPage /></>} />
               <Route path="/requests" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><RequestsPage /></>} />
               <Route path="/users" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><UsersPage /></>} />
               <Route path="/edit-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><EditUser /></>} />
