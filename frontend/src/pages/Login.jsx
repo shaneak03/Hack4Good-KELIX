@@ -19,6 +19,7 @@ const Login = ({ onLogin }) => {
 
         if (error || users.length === 0) {
             console.error('Error fetching user:', error);
+            alert('Invalid username');
             return;
         }
 
@@ -28,14 +29,16 @@ const Login = ({ onLogin }) => {
         const isPasswordValid = await bcrypt.compare(password, user.Password);
         if (!isPasswordValid) {
             console.error('Invalid password');
+            alert('Invalid password');
             return;
         }
 
         // Fetch the Admin value
         const isAdmin = user.Admin;
+        const id = user.ID;
         console.log('isAdmin in Login:', isAdmin);
 
-        onLogin(isAdmin);
+        onLogin(isAdmin, id);
         navigate('/');
     };
 

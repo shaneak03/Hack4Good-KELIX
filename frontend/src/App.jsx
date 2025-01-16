@@ -26,12 +26,14 @@ import { supabase } from '../src/utils/supabaseClient';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [id, setId] = useState('');
 
-  const handleLogin = (adminStatus) => {
+  const handleLogin = (adminStatus, id) => {
     console.log('isAdmin in App before set:', adminStatus);
     setIsAdmin(adminStatus);
     setIsLoggedIn(true);
     console.log('isAdmin in App after set:', isAdmin);
+    setId(id);
   };
 
   const navItems = [
