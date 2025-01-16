@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, UNSAFE_createClientRoutesWithHMRRevalidationOptOut } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import ProductPage from './pages/ProductPage';
 import NavBar from './components/NavBar';
@@ -20,13 +20,16 @@ import EditProduct from './pages/EditProduct';
 import TransactionHistory from './pages/TransactionHistory';
 import TaskAdminPage from './pages/TaskAdminPage';
 import EditTask from './pages/EditTask';
-
 import { supabase } from '../src/utils/supabaseClient';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [id, setId] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(Cookies.get('userId') ? true : false);
+  const [isAdmin, setIsAdmin] = useState(Cookies.get('isAdmin') === 'true');
+  const [id, setId] = useState(Cookies.get('userId') || '');
+
+  useEffect(() => {
+    console.log('Cookies on load:', { isAdmin, id });
+  }, [isAdmin, id]);
 
   const handleLogin = (adminStatus, id) => {
     console.log('isAdmin in App before set:', adminStatus);
@@ -35,12 +38,18 @@ function App() {
     console.log('isAdmin in App after set:', isAdmin);
     console.log('id in App:', id);
     setId(id);
+    Cookies.set('isAdmin', adminStatus, { expires: 7 });
+    Cookies.set('userId', id, { expires: 7 });
+    console.log('Cookies after login:', { isAdmin: Cookies.get('isAdmin'), userId: Cookies.get('userId') });
   };
 
   const handleLogout = () => {
     setIsAdmin(false);
     setIsLoggedIn(false);
     setId("");
+    Cookies.remove('isAdmin');
+    Cookies.remove('userId');
+    console.log('Cookies after logout:', { isAdmin: Cookies.get('isAdmin'), userId: Cookies.get('userId') });
   };
 
   const navItems = [

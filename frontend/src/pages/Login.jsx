@@ -3,6 +3,7 @@ import { Container, TextField, Button, Typography, Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../utils/supabaseClient';
 import bcrypt from 'bcryptjs';
+import Cookies from 'js-cookie';
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
@@ -39,6 +40,9 @@ const Login = ({ onLogin }) => {
         console.log('isAdmin in Login:', isAdmin);
 
         onLogin(isAdmin, id);
+        Cookies.set('isAdmin', isAdmin, { expires: 7 });
+        Cookies.set('userId', id, { expires: 7 });
+        console.log('Cookies after login:', { isAdmin: Cookies.get('isAdmin'), userId: Cookies.get('userId') });
         navigate('/');
     };
 
