@@ -1,24 +1,37 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, Grid } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../utils/supabaseClient';
 
 const AddProduct = () => {
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [productPrice, setProductPrice] = useState('');
+  const [productQuantity, setProductQuantity] = useState('');
+  const [productImageUrl, setProductImageUrl] = useState('');
+  const navigate = useNavigate();
 
-  const handleAddProduct = () => {
-    // Logic to add a new product
-    console.log('Product added:', { productName, productDescription, productPrice });
-  };
+  const handleAddProduct = async () => {
+    if (!productName || !productPrice) {
+      alert('Product name and price are required');
+      return;
+    }
 
-  const handleDeleteProduct = () => {
-    // Logic to delete a product
-    console.log('Product deleted:', { productName, productDescription, productPrice });
-  };
+    // Insert the new product into the Supabase database
+    const { data, error } = await supabase
+      .from('Product')
+      .insert([
+        { Name: productName, Description: productDescription, Points: productPrice, Available: productQuantity, Image: productImageUrl }
+      ]);
 
-  const handleAttachImage = () => {
-    // Logic to attach an image
-    console.log('Image attached');
+    if (error) {
+      console.error('Error adding product:', error);
+      alert('Error adding product');
+    } else {
+      console.log('Product added:', data);
+      // Navigate to the product admin page after adding the product
+      navigate('/product-admin');
+    }
   };
 
   return (
@@ -35,6 +48,7 @@ const AddProduct = () => {
               variant="outlined"
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
+              required
             />
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -44,6 +58,17 @@ const AddProduct = () => {
               variant="outlined"
               value={productPrice}
               onChange={(e) => setProductPrice(e.target.value)}
+              type="number"
+              required
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="Product Quantity"
+              variant="outlined"
+              value={productQuantity}
+              onChange={(e) => setProductQuantity(e.target.value)}
               type="number"
             />
           </Grid>
@@ -56,20 +81,19 @@ const AddProduct = () => {
               onChange={(e) => setProductDescription(e.target.value)}
             />
           </Grid>
+          <Grid item xs={12} sm={8}>
+            <TextField
+              fullWidth
+              label="Product Image URL"
+              variant="outlined"
+              value={productImageUrl}
+              onChange={(e) => setProductImageUrl(e.target.value)}
+            />
+          </Grid>
           <Grid item xs={12} sm={8} container justifyContent="flex-end" spacing={2}>
             <Grid item xs={12} sm={2}>
-              <Button variant="contained" onClick={handleAttachImage} fullWidth>
-                Attach Image
-              </Button>
-            </Grid>
-            <Grid item xs={12} sm={2}>
               <Button variant="contained" color="primary" onClick={handleAddProduct} fullWidth>
-                Save
-              </Button>
-            </Grid>
-            <Grid item xs={12} sm={2}>
-              <Button variant="contained" sx={{ backgroundColor: '#d32f2f' }} onClick={handleDeleteProduct} fullWidth>
-                Delete
+                Add
               </Button>
             </Grid>
           </Grid>

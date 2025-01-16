@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Grid } from '@mui/material';
 import { useParams, useLocation } from 'react-router-dom';
-import NavBar from '../components/NavBar'; // Import NavBar component
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -11,6 +10,8 @@ const EditProduct = () => {
   const [productName, setProductName] = useState(product ? product.name : '');
   const [productDescription, setProductDescription] = useState(product ? product.description : '');
   const [productPrice, setProductPrice] = useState(product ? product.price : '');
+  const [productQuantity, setProductQuantity] = useState(product ? product.quantity : '');
+  const [productImageUrl, setProductImageUrl] = useState(product ? product.image : '');
 
   useEffect(() => {
     if (!product) {
@@ -21,6 +22,8 @@ const EditProduct = () => {
           setProductName(data.name);
           setProductDescription(data.description);
           setProductPrice(data.price);
+          setProductQuantity(data.quantity);
+          setProductImageUrl(data.image);
         })
         .catch(error => {
           console.error('There was an error fetching the product!', error);
@@ -30,22 +33,16 @@ const EditProduct = () => {
 
   const handleUpdateProduct = () => {
     // Logic to update the product
-    console.log('Product updated:', { productName, productDescription, productPrice });
+    console.log('Product updated:', { productName, productDescription, productPrice, productQuantity, productImageUrl });
   };
 
   const handleDeleteProduct = () => {
     // Logic to delete a product
-    console.log('Product deleted:', { productName, productDescription, productPrice });
-  };
-
-  const handleAttachImage = () => {
-    // Logic to attach an image
-    console.log('Image attached');
+    console.log('Product deleted:', { productName, productDescription, productPrice, productQuantity, productImageUrl });
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <NavBar logo="https://via.placeholder.com/40" navItems={['Home', 'Products', 'Tasks']} bankValue={300} />
       <Box sx={{ padding: '20px' }}>
         <Typography variant="h4" gutterBottom align="center">
           Edit Product
@@ -70,6 +67,16 @@ const EditProduct = () => {
               type="number"
             />
           </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              fullWidth
+              label="Product Quantity"
+              variant="outlined"
+              value={productQuantity}
+              onChange={(e) => setProductQuantity(e.target.value)}
+              type="number"
+            />
+          </Grid>
           <Grid item xs={12} sm={8}>
             <TextField
               fullWidth
@@ -79,12 +86,16 @@ const EditProduct = () => {
               onChange={(e) => setProductDescription(e.target.value)}
             />
           </Grid>
+          <Grid item xs={12} sm={8}>
+            <TextField
+              fullWidth
+              label="Product Image URL"
+              variant="outlined"
+              value={productImageUrl}
+              onChange={(e) => setProductImageUrl(e.target.value)}
+            />
+          </Grid>
           <Grid item xs={12} sm={8} container justifyContent="flex-end" spacing={2}>
-            <Grid item xs={12} sm={2}>
-              <Button variant="contained" onClick={handleAttachImage} fullWidth>
-                Attach Image
-              </Button>
-            </Grid>
             <Grid item xs={12} sm={2}>
               <Button variant="contained" color="primary" onClick={handleUpdateProduct} fullWidth>
                 Save

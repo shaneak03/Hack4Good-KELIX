@@ -21,6 +21,9 @@ const ProductCardAdmin = ({ product, onEdit }) => {
           <Typography variant="h6" color="primary">
             {product.price}
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Quantity: {product.quantity}
+          </Typography>
           <Button variant="contained" color="primary" onClick={onEdit}>
             Edit
           </Button>

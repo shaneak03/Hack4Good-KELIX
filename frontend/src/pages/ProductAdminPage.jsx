@@ -17,8 +17,8 @@ const ProductAdminPage = () => {
   };
 
   const products = [
-    { id: 1, name: 'Product 1', description: 'Description for product 1', price: 100 },
-    { id: 2, name: 'Product 2', description: 'Description for product 2', price: 200 },
+    { id: 1, name: 'Product 1', description: 'Description for product 1', price: 100, quantity: 10 },
+    { id: 2, name: 'Product 2', description: 'Description for product 2', price: 200, quantity: 20 },
     // Add more products as needed
   ];
 
@@ -48,7 +48,7 @@ const ProductAdminPage = () => {
           {products.map((product) => (
             <Grid item key={product.id} xs={12} sm={6} md={4}>
               <ProductCardAdmin 
-                product={{ ...product, price: `$${product.price}` }} 
+                product={{ ...product, price: `$${product.price}`, quantity: product.quantity }} 
                 onEdit={() => handleEditProduct(product)} 
               />
             </Grid>
