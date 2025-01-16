@@ -6,7 +6,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ logo, navItems, bankValue, onLogout }) => {
+const Navbar = ({ navItems, bankValue, onLogout }) => { // Remove logo prop
   const [navAnchorEl, setNavAnchorEl] = useState(null);
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const theme = useTheme();
@@ -49,11 +49,9 @@ const Navbar = ({ logo, navItems, bankValue, onLogout }) => {
       <Toolbar>
         {/* Logo on the left */}
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ height: '40px', marginRight: '15px', cursor: 'pointer' }}
-            onClick={() => navigate('/')}
+          <ShoppingCartIcon 
+            style={{ height: '40px', width: '40px', marginRight: '15px', cursor: 'pointer' }} 
+            onClick={() => navigate('/')} 
           />
           {isMobile ? (
             <>
@@ -95,11 +93,6 @@ const Navbar = ({ logo, navItems, bankValue, onLogout }) => {
             </Box>
           )}
         </Box>
-
-        {/* Cart Icon */}
-        <IconButton color="inherit">
-          <ShoppingCartIcon />
-        </IconButton>
 
         {/* Profile Section */}
         <IconButton onClick={handleProfileMenuOpen}>

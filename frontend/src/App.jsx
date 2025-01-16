@@ -22,6 +22,7 @@ import TaskAdminPage from './pages/TaskAdminPage';
 import EditTask from './pages/EditTask';
 import AuctionPage from './pages/AuctionPage';
 import BidPage from './pages/BidPage';
+import BondsPage from './pages/BondsPage';
 import { supabase } from '../src/utils/supabaseClient';
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
     { label: 'Products', path: '/products'},
     { label: 'Tasks', path: '/tasks'},
     { label: 'Auction', path: '/auction'},
+    { label: 'Bonds', path: '/bonds'},
   ];
   const navItemsAdmin = [
     { label: 'Products', path: '/product-admin'},
@@ -82,6 +84,7 @@ function App() {
               <Route path="/profile" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><ProfilePage /></>} />
               <Route path="/auction" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><AuctionPage /></>} />
               <Route path="/bid" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><BidPage /></>} />
+              <Route path="/bonds" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><BondsPage /></>} />
               <Route path="/requests" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><RequestsPage /></>} />
               <Route path="/users" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><UsersPage /></>} />
               <Route path="/edit-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><EditUser /></>} />
