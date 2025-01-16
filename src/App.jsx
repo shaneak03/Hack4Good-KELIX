@@ -41,8 +41,8 @@ function App() {
     console.log('isAdmin in App after set:', isAdmin);
     console.log('id in App:', id);
     setId(id);
-    Cookies.set('isAdmin', adminStatus, { expires: 7 });
-    Cookies.set('userId', id, { expires: 7 });
+    Cookies.set('isAdmin', adminStatus, { expires: 7, path: '/' }); // Set explicit path
+    Cookies.set('userId', id, { expires: 7, path: '/' }); // Set explicit path
     console.log('Cookies after login:', { isAdmin: Cookies.get('isAdmin'), userId: Cookies.get('userId') });
   };
 
@@ -50,8 +50,8 @@ function App() {
     setIsAdmin(false);
     setIsLoggedIn(false);
     setId("");
-    Cookies.remove('isAdmin');
-    Cookies.remove('userId');
+    Cookies.remove('isAdmin', { path: '/' }); // Set explicit path
+    Cookies.remove('userId', { path: '/' }); // Set explicit path
     console.log('Cookies after logout:', { isAdmin: Cookies.get('isAdmin'), userId: Cookies.get('userId') });
   };
 
@@ -71,7 +71,7 @@ function App() {
   ]
   return (
     <>
-      <Router basename="/Hack4Good-KELIX"> {/* Add basename */}
+      <Router basename="/Hack4Good-KELIX">
         <Routes> 
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/change-password" element={<ChangePassword />} />
