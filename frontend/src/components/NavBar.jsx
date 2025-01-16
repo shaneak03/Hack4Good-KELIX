@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Menu, MenuItem, Avatar, Box } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Menu, MenuItem, Avatar, Box, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ logo, navItems, bankValue }) => {
+const Navbar = ({ logo, navItems, bankValue, onLogout }) => {
   const [navAnchorEl, setNavAnchorEl] = useState(null);
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const theme = useTheme();
@@ -31,6 +31,7 @@ const Navbar = ({ logo, navItems, bankValue }) => {
 
   const handleLogout = () => {
     handleProfileMenuClose();
+    onLogout();
     navigate('/login');
   };
 
