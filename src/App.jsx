@@ -71,7 +71,7 @@ function App() {
   ]
   return (
     <>
-      <Router>
+      <Router basename="/Hack4Good-KELIX"> {/* Add basename */}
         <Routes> 
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/change-password" element={<ChangePassword />} />
