@@ -9,15 +9,17 @@ const ProductPage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data, error } = await supabase.from('Product').select('ProductID, Points, Available, Sensitive, Category, Name, Image, Description');
-      if (error) {
-        console.error('Error fetching products:', error);
-      } else {
-        setProducts(data);
-        console.log('Products:', data);
-      }
-    };
+      const fetchProducts = async () => {
+        const { data, error } = await supabase
+          .from('Product')
+          .select('*');
+  
+        if (error) {
+          console.error('Error fetching products:', error);
+        } else {
+          setProducts(data);
+        }
+      };
 
     fetchProducts();
   }, []);
@@ -33,7 +35,10 @@ const ProductPage = () => {
   };
 
   const calculateTotal = () => {
-    return cart.reduce((total, product) => total + parseFloat(product.price.slice(1)), 0).toFixed(2);
+    return cart.reduce((total, product) => {
+      const price = typeof product.Points === 'number' ? product.Points : parseFloat(product.Points);
+      return total + (isNaN(price) ? 0 : price);
+    }, 0).toFixed(2);
   };
 
   return (
@@ -45,12 +50,12 @@ const ProductPage = () => {
         <Grid item xs={12} md={9} order={{ xs: 1, md: 2 }}>
           <Grid container spacing={4}>
             {products.map((product) => (
-              <Grid item xs={12} sm={6} md={4} key={product.ProductID}>
+              <Grid item xs={12} sm={6} md={4} key={product.Product_ID}>
                 <ProductCard product={product} addToCart={addToCart} />
               </Grid>
             ))}
           </Grid>
-        </Grid>
+        </Grid> 
         <Grid item xs={12} md={3} order={{ xs: 2, md: 1 }}>
           <Typography variant="h5" gutterBottom>
             Cart
@@ -62,7 +67,7 @@ const ProductPage = () => {
                   <DeleteIcon />
                 </IconButton>
               }>
-                <ListItemText primary={item.name} secondary={`Price: ${item.price}`} />
+                <ListItemText primary={item.Name} secondary={`Price: ${item.Points}`} />
               </ListItem>
             ))}
           </List>

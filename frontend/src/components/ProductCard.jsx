@@ -7,19 +7,19 @@ const ProductCard = ({ product, addToCart }) => {
       <CardMedia
         component="img"
         height="200"
-        image={product.image}
-        alt={product.name}
+        image={product.Image}
+        alt={product.Name}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {product.name}
+          {product.Name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {product.description}
+          {product.Description}
         </Typography>
         <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
           <Typography variant="h6" color="primary">
-            {product.price}
+            ${product.Points}
           </Typography>
           <Button variant="contained" color="primary" onClick={() => addToCart(product)}>
             Add to Cart
