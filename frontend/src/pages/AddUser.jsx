@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, TextField, Button, Typography, Grid } from '@mui/material';
+import bcrypt from 'bcryptjs';
+import { supabase } from '../utils/supabaseClient'; 
 
 const AddUser = () => {
   const [name, setName] = useState('');
   const [bankValue, setBankValue] = useState(0);
+  const navigate = useNavigate();
 
-  const handleSave = () => {
+   const handleSave = async () => {
     // Logic to save the new user details
-    console.log('New user added:', { name, bankValue });
-  };
+    const hashedPassword = await bcrypt.hash("password", 10);
+    console.log('New user added:', name);
+    
+    const { data, error } = await supabase
+      .from('Personnel')
+      .insert([{ User_Name: name, Password: hashedPassword, Admin: false, Points: bankValue }]);
+  
+      navigate('/users');
+    };
 
-  const handleDeleteUser = () => {
-    // Logic to delete the user
-    console.log('Delete user clicked');
+  const handleReturn = () => {
+    navigate('/users');
   };
 
   return (
@@ -50,8 +60,8 @@ const AddUser = () => {
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="contained" sx={{ backgroundColor: '#d32f2f' }} onClick={handleDeleteUser}>
-                Delete
+              <Button variant="contained" sx={{ backgroundColor: '#d32f2f' }} onClick={handleReturn}>
+                Return
               </Button>
             </Grid>
           </Grid>

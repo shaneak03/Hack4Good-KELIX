@@ -4,6 +4,7 @@ import TaskCard from '../components/TaskCard'; // Ensure this path is correct
 import NavBar from '../components/NavBar'; // Import NavBar component
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
+
 // Sample task data
 const tasks = [
   {

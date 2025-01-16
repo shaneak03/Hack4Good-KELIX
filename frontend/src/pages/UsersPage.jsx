@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import UserCard from '../components/UserCard'; // Import UserCard component
-
-const users = [
-  { id: 1, name: 'Jing Rong', bankValue: 100 },
-  { id: 2, name: 'KELIX', bankValue: 200 },
-  { id: 3, name: 'Shane', bankValue: 300 },
-];
+import { supabase } from '../utils/supabaseClient'; 
 
 const UsersPage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  const [users, setUsers] = useState([]);
+
+  const fetchUsers = async () => {
+    const { data, error } = await supabase
+      .from('Personnel')
+      .select('ID, User_Name, Points');
+
+    if (error) {
+      console.error('Error fetching users:', error);
+    } else {
+      setUsers(data);
+      console.log(data);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   const handleEditUser = (user) => {
     navigate('/edit-user', { state: { user } });
@@ -22,7 +34,7 @@ const UsersPage = () => {
   };
 
   const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    user.User_Name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -52,7 +64,16 @@ const UsersPage = () => {
           </TableHead>
           <TableBody>
             {filteredUsers.map((user) => (
-              <UserCard key={user.id} user={user} onEdit={handleEditUser} />
+              <TableRow key={user.ID}>
+                <TableCell>{user.ID}</TableCell>
+                <TableCell>{user.User_Name}</TableCell>
+                <TableCell>{user.Points}</TableCell>
+                <TableCell>
+                  <Button variant="contained" color="primary" onClick={() => handleEditUser(user)}>
+                    Edit
+                  </Button>
+                </TableCell>
+              </TableRow>
             ))}
           </TableBody>
         </Table>
