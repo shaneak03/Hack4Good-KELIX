@@ -15,6 +15,13 @@ const voucherRequests = [
     // ...existing data...
 ];
 
+const inventorySummary = [
+    { item: 'Pencils', quantity: 100 },
+    { item: 'Pizza', quantity: 50 },
+    { item: 'Chairs', quantity: 20 },
+    // ...existing data...
+];
+
 const ReportsPage = () => {
     const today = new Date().toISOString().split('T')[0];
     const [reportType, setReportType] = useState('miniMart');
@@ -66,11 +73,12 @@ const ReportsPage = () => {
                         >
                             <MenuItem value="miniMart">MiniMart Requests</MenuItem>
                             <MenuItem value="voucher">Voucher Requests</MenuItem>
+                            <MenuItem value="inventory">Inventory Summary</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
             </Box>
-<Box p={2} flex="1 1 auto" display="flex">
+            <Box p={2} flex="1 1 auto" display="flex">
                 {reportType === 'miniMart' && (
                     <TableContainer component={Paper} sx={{ maxHeight: '100%' }}>
                         <Table stickyHeader>
@@ -125,6 +133,26 @@ const ReportsPage = () => {
                                                 {request.approved ? "Approved" : "Approve"}
                                             </Button>
                                         </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                )}
+                {reportType === 'inventory' && (
+                    <TableContainer component={Paper} sx={{ maxHeight: '100%' }}>
+                        <Table stickyHeader>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Item</TableCell>
+                                    <TableCell>Quantity</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {inventorySummary.map((item, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell>{item.item}</TableCell>
+                                        <TableCell>{item.quantity}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
