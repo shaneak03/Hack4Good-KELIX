@@ -9,27 +9,27 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 const tasks = [
   {
     id: 1,
-    title: 'Task 1',
+    title: 'Memorise a Subject Topic',
     points: 50,
-    image: 'https://via.placeholder.com/200',
+    image: 'https://www.ninds.nih.gov/sites/default/files/styles/half_width_small/public/2022-04/KYB_Brain_Basics_Brain040522.png?itok=geqsoubE',
   },
   {
     id: 2,
-    title: 'Task 2',
-    points: 30,
-    image: 'https://via.placeholder.com/200',
+    title: 'Write a Reflection',
+    points: 80,
+    image: 'https://img.freepik.com/premium-vector/light-bulb-icon-energy-thinking-symbol-creative-idea-inspiration-concept-vector-illustration_97458-1278.jpg',
   },
   {
     id: 3,
-    title: 'Task 3',
-    points: 70,
-    image: 'https://via.placeholder.com/200',
+    title: 'Survey for Cookhouse',
+    points: 50,
+    image: 'https://img.freepik.com/premium-vector/kids-drawing-cartoon-vector-illustration-notebook-ballpoint-pen-icon-isolated_760559-868.jpg',
   },
   {
     id: 4,
-    title: 'Task 4',
-    points: 90,
-    image: 'https://via.placeholder.com/200',
+    title: 'Mural Design Competition',
+    points: 100,
+    image: 'https://nus.edu.sg/osa/images/default-source/default-album/dsc_7539.jpg?sfvrsn=3d2adc09_0',
   },
 ];
 
@@ -38,7 +38,7 @@ const sampleTask = {
   title: 'Sample Task',
   description: 'This is a sample task description.',
   points: 100,
-  image: 'https://via.placeholder.com/200',
+  image: 'https://img.freepik.com/free-photo/man-making-graffiti-with-aerosol-can-wall_23-2147827504.jpg?t=st=1737087438~exp=1737091038~hmac=6cc367b61cb4603cf06872936f21becc9272e87a8a93f8e99ccac1ab3401f7e1&w=900',
 };
 
 const TaskPage = () => {

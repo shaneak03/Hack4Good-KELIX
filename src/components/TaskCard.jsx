@@ -13,7 +13,7 @@ const TaskCard = ({ id, image, title, points }) => {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="200"
         image={image}
         alt={title}
       />
