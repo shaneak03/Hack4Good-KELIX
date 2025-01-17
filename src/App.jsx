@@ -78,25 +78,25 @@ function App() {
           <Route path="/change-password" element={<ChangePassword />} />
           {isLoggedIn ? (
             <>
-              <Route path="/" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><HomePage /></>} />
-              <Route path="/products" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><ProductPage /></>} />
-              <Route path="/tasks" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><TaskPage /></>} />
-              <Route path="/task-detail/:id" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><TaskDetail /></>} />
-              <Route path="/profile" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><ProfilePage /></>} />
-              <Route path="/auction" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><AuctionPage /></>} />
-              <Route path="/bid" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><BidPage /></>} />
-              <Route path="/bonds" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><BondsPage /></>} />
-              <Route path="/transactions" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={300} onLogout={handleLogout} /><TransactionHistory /></>} />
-              <Route path="/requests" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><RequestsPage /></>} />
-              <Route path="/users" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><UsersPage /></>} />
-              <Route path="/edit-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><EditUser /></>} />
-              <Route path="/add-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><AddUser /></>} /> 
-              <Route path="/reports" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><ReportsPage /></>} />
-              <Route path="/product-admin" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><ProductAdminPage /></>} />
-              <Route path="/product-add" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><AddProduct /></>} />
-              <Route path="/product-edit/:id" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><EditProduct /></>} />
-              <Route path="/tasks-admin" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><TaskAdminPage /></>} />
-              <Route path="/task-edit" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><EditTask /></>} />
+              <Route path="/" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><HomePage /></>} />
+              <Route path="/products" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><ProductPage /></>} />
+              <Route path="/tasks" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><TaskPage /></>} />
+              <Route path="/task-detail/:id" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><TaskDetail /></>} />
+              <Route path="/profile" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><ProfilePage /></>} />
+              <Route path="/auction" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><AuctionPage /></>} />
+              <Route path="/bid" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><BidPage /></>} />
+              <Route path="/bonds" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><BondsPage /></>} />
+              <Route path="/transactions" element={<><NavBar logo="https://via.placeholder.com/40" navItems={isAdmin ? navItemsAdmin : navItems} bankValue={500} onLogout={handleLogout} /><TransactionHistory /></>} />
+              <Route path="/requests" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><RequestsPage /></>} />
+              <Route path="/users" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><UsersPage /></>} />
+              <Route path="/edit-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><EditUser /></>} />
+              <Route path="/add-user" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><AddUser /></>} /> 
+              <Route path="/reports" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><ReportsPage /></>} />
+              <Route path="/product-admin" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><ProductAdminPage /></>} />
+              <Route path="/product-add" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><AddProduct /></>} />
+              <Route path="/product-edit/:id" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><EditProduct /></>} />
+              <Route path="/tasks-admin" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><TaskAdminPage /></>} />
+              <Route path="/task-edit" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={500} onLogout={handleLogout} /><EditTask /></>} />
               {/* Add other routes here */}
             </>
           ) : (
