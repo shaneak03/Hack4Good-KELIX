@@ -3,9 +3,9 @@ import { Box, Typography, Container, Grid, Card, CardContent, CardMedia, Button 
 import { useNavigate } from 'react-router-dom';
 
 const products = [
-  { id: 1, name: 'Product 1', description: 'Description of Product 1', image: 'https://via.placeholder.com/150' },
-  { id: 2, name: 'Product 2', description: 'Description of Product 2', image: 'https://via.placeholder.com/150' },
-  { id: 3, name: 'Product 3', description: 'Description of Product 3', image: 'https://via.placeholder.com/150' },
+  { id: 1, name: 'XBox Series X', description: 'This is a Xbox', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPYuac6SrrIXGn1l2rDdF5MEU3zkeOneDDmg&s' },
+  { id: 2, name: 'PlayStation 5', description: 'This is a PS5', image: 'https://gmedia.playstation.com/is/image/SIEPDC/ps5-pro-dualsense-image-block-01-en-16aug24' },
+  { id: 3, name: 'Nintendo Switch', description: 'This is a Switch', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcWihqQzdNRnTcov2Hvv095CvpCqKRm47prshZ-XgC22OucNo2OhQvhEnAu5CGoaQkWggnECk9Dd7gMMIOwIOCjVLoCvAV53ZBquqLAg' },
 ];
 
 const AuctionPage = () => {
@@ -29,7 +29,7 @@ const AuctionPage = () => {
               <Card>
                 <CardMedia
                   component="img"
-                  height="140"
+                  height="250"
                   image={product.image}
                   alt={product.name}
                 />
