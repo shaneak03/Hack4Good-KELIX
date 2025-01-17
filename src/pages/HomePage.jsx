@@ -26,7 +26,7 @@ const HomePage = () => {
     <Container>
       <Box sx={{ my: 4 }}>
         <Typography variant="h3" component="h1" gutterBottom>
-          Welcome to the Minimart
+          Welcome!
         </Typography>
         <Typography variant="h4" component="h2" gutterBottom>
           Events
