@@ -5,9 +5,9 @@ import Carousel from 'react-material-ui-carousel';
 
 const HomePage = () => {
   const events = [
-    { title: 'Event 1', details: 'Details about Event 1.', image: 'https://via.placeholder.com/300?text=Event+1' },
-    { title: 'Event 2', details: 'Details about Event 2.', image: 'https://via.placeholder.com/300?text=Event+2' },
-    { title: 'Event 3', details: 'Details about Event 3.', image: 'https://via.placeholder.com/300?text=Event+3' },
+    { title: 'Muhammadiyah Welfare Home Futsal Tournament', details: 'Join our fun-filled Futsal Tournament and stand a chance to win some attractive prizes!!!.', image: 'https://mwh.muhammadiyah.org.sg/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-25-at-4.12.37-PM-e1624614364771.jpeg' },
+    { title: 'Visit to Helix House', details: 'Come see how students in NUS live in the newest on campus accommodation in school!', image: 'https://content.presspage.com/uploads/2580/540c30ce-6827-4cfc-8263-59dadbf5105a/1920_lkc2.jpg?10000' },
+    { title: 'Dinner at King Edward VII Hall', details: 'Experience the life of staying in a NUS Hall and enjoying a scrumptious dinner.', image: 'https://nus.edu.sg/osa/images/default-source/kevii-hall/open-house/ke7.jpg?sfvrsn=6992cf38_2' },
   ];
 
   const announcements = [
@@ -26,7 +26,7 @@ const HomePage = () => {
     <Container>
       <Box sx={{ my: 4 }}>
         <Typography variant="h3" component="h1" gutterBottom>
-          Welcome to the HomePage
+          Welcome to the Minimart
         </Typography>
         <Typography variant="h4" component="h2" gutterBottom>
           Events
@@ -36,7 +36,7 @@ const HomePage = () => {
             <Card key={index}>
               <CardMedia
                 component="img"
-                height="140"
+                height="400" // Increase height
                 image={event.image}
                 alt={event.title}
               />
