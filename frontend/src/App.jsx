@@ -21,6 +21,7 @@ import TransactionHistory from './pages/TransactionHistory';
 import TaskAdminPage from './pages/TaskAdminPage';
 import EditTask from './pages/EditTask';
 import BondsPage from './pages/BondsPage';
+import SignUp from './pages/SignUp'; // Import the SignUp page
 
 import { supabase } from '../src/utils/supabaseClient';
 
@@ -62,6 +63,7 @@ function App() {
         <Routes> 
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/change-password" element={<ChangePassword />} />
+          <Route path="/sign-up" element={<SignUp />} /> {/* Add the SignUp route */}
           <Route path="/bonds" element={<><NavBar logo="https://via.placeholder.com/40" navItems={navItemsAdmin} bankValue={300} onLogout={handleLogout} /><BondsPage /></>} /> 
           {isLoggedIn ? (
             <>

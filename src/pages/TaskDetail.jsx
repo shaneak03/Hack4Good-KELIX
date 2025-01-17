@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
+import { Button, Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
 
 const TaskDetail = () => {
   const { id } = useParams();
@@ -20,12 +20,14 @@ const TaskDetail = () => {
           <Typography gutterBottom variant="h4" component="div">
             {title}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography p={1} variant="body1" color="text.secondary">
             Points: {points}
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ marginTop: '20px' }}>
+          <Typography p={1} variant="body2" color="text.secondary" sx={{ marginBottom: '10px' }}>
             Task ID: {id}
+
           </Typography>
+          <Button p={2} variant="contained" color="primary" onClick={() => alert("Sign up confirmed!")}>Sign up</Button>
         </CardContent>
       </Card>
     </Box>
