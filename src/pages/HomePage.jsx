@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box, Card, CardContent, CardMedia } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Container, Typography, Box, Card, CardContent, CardMedia } from '@mui/material'; 
 import Carousel from 'react-material-ui-carousel';
 
 const HomePage = () => {
@@ -11,16 +10,11 @@ const HomePage = () => {
   ];
 
   const announcements = [
-    { title: 'Announcement 1', details: 'Details about Announcement 1.' },
-    { title: 'Announcement 2', details: 'Details about Announcement 2.' },
-    { title: 'Announcement 3', details: 'Details about Announcement 3.' },
+    { title: 'Xbox bidding starting soon!', details: 'Starts at 9am Feb 1' },
+    { title: 'Candy now on sale!', details: 'Grab before its gone.' },
+    { title: 'Chinese New Year', details: 'Happy Chinese New Year, have a good break!' },
   ];
 
-  const categories = [
-    { link: '/category1', logo: 'https://via.placeholder.com/40?text=C1' },
-    { link: '/category2', logo: 'https://via.placeholder.com/40?text=C2' },
-    { link: '/category3', logo: 'https://via.placeholder.com/40?text=C3' },
-  ];
 
   return (
     <Container>
@@ -68,13 +62,6 @@ const HomePage = () => {
             </Card>
           ))}
         </Carousel>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
-          {categories.map((category, index) => (
-            <Link key={index} to={category.link}>
-              <img src={category.logo} alt={`Category ${index + 1}`} style={{ height: '40px', marginRight: '15px' }} />
-            </Link>
-          ))}
-        </Box>
       </Box>
     </Container>
   );
