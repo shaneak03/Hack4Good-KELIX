@@ -20,5 +20,60 @@ Design and develop a web-based Minimart and Voucher System for Muhammadiyah Welf
 ## Our Vision
 We seek to empower the residents of Muhammadiyah Welfare Home through improving their financial literacy, while providing a convenient platform for using the Minimart.
 
-## Pages
+### Basic Features
+- User authentication
+- Mini Mart Management System
+- Tasks Mangement System
+- Transactions Tracking
+- Profile Management System
+- User Management System
+- Dynamic Report Generation
+
+### Unique Features
+Additional Financial functions
+- Auction items
+- Bonds Investment System
+- Passive Savings Scheme
+
+
+## Demo
+
+### Deployed project link (Recommended)
+[Deployed link](https://shaneak03.github.io/Hack4Good-KELIX)
+
+
+### Demo Account details
+
+User testing account : user
+
+Admin testing account : admin
+
+Testing password : password
+
+
+### Setting up locally (Not Recommended)
+Follow these steps to set up the project locally on your machine.
+
+
+**Cloning the Repository**
+```git clone https://github.com/shaneak03/Hack4Good-KELIX/```
+
+
+**Prerequisite and Installation**
+Make sure you have the following installed on your machine :
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm (Node Package Manager)](https://www.npmjs.com/)
+
+
+Install the project dependencies using npm: 
+```npm install```
+
+Starting the project
+```npm run dev```
+
+Open the localhost link in the command prompt to launch the wbesite in your browser.
+
+Note : Supabase .env not in the repository, so database will not be functional. Please use the deployed link instead.
+
 
