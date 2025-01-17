@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Typography, Box, List, ListItem, ListItemText, Divider, IconButton } from '@mui/material';
+import { Grid, Typography, Box, List, ListItem, ListItemText, Divider, IconButton, Button, TextField } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ProductCard from '../components/ProductCard';
 import { supabase } from '../utils/supabaseClient';
@@ -7,6 +7,7 @@ import { supabase } from '../utils/supabaseClient';
 const ProductPage = () => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
       const fetchProducts = async () => {
@@ -41,15 +42,32 @@ const ProductPage = () => {
     }, 0).toFixed(2);
   };
 
+  const handleCheckout = () => {
+    alert(`Checkout successful! Total: $${calculateTotal()}`);
+    setCart([]);
+  };
+
+  const filteredProducts = products.filter(product =>
+    product.Name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <Box sx={{ flexGrow: 1, padding: '20px' }}>
       <Typography variant="h3" gutterBottom align="center">
         Our Products
       </Typography>
+      <TextField
+        label="Search Products"
+        variant="outlined"
+        fullWidth
+        margin="normal"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <Grid container spacing={4} justifyContent="center">
         <Grid item xs={12} md={9} order={{ xs: 1, md: 2 }}>
           <Grid container spacing={4}>
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <Grid item xs={12} sm={6} md={4} key={product.Product_ID}>
                 <ProductCard product={product} addToCart={addToCart} />
               </Grid>
@@ -75,6 +93,9 @@ const ProductPage = () => {
           <Typography variant="h6" gutterTop>
             Total: ${calculateTotal()}
           </Typography>
+          <Button variant="contained" color="primary" onClick={handleCheckout} sx={{ mt: 2 }}>
+            Checkout
+          </Button>
         </Grid>
       </Grid>
     </Box>
