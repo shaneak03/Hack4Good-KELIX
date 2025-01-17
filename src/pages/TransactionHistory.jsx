@@ -1,7 +1,15 @@
 import React from 'react';
 import { Box, Typography, Container, Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@mui/material';
 
-const TransactionHistory = ({ user = { transactions: [] } }) => {
+const dummyUser = {
+  transactions: [
+    { name: 'Kit Kat', quantity: 2, price: 200 },
+    { name: 'Toblerone', quantity: 1, price: 300 },
+    { name: 'KitKat', quantity: 3, price: 200 },
+  ],
+};
+
+const TransactionHistory = ({ user = dummyUser }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Box sx={{ padding: '20px' }}>

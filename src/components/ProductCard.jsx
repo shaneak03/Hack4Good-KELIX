@@ -19,7 +19,7 @@ const ProductCard = ({ product, addToCart }) => {
         </Typography>
         <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
           <Typography variant="h6" color="primary">
-            ${product.Points}
+            {product.Points}
           </Typography>
           <Button variant="contained" color="primary" onClick={() => addToCart(product)}>
             Add to Cart

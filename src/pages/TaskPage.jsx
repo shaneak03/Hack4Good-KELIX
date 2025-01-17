@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Box, TextField, Typography, Button } from '@mui/material';
 import TaskCard from '../components/TaskCard'; // Ensure this path is correct
-import NavBar from '../components/NavBar'; // Import NavBar component
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 
@@ -11,24 +10,28 @@ const tasks = [
     id: 1,
     title: 'Memorise a Subject Topic',
     points: 50,
+    description: "Memorise this subject topic",
     image: 'https://www.ninds.nih.gov/sites/default/files/styles/half_width_small/public/2022-04/KYB_Brain_Basics_Brain040522.png?itok=geqsoubE',
   },
   {
     id: 2,
     title: 'Write a Reflection',
     points: 80,
+    description: 'Write a reflection for the learning journey we went on to the Garden by the Bay',
     image: 'https://img.freepik.com/premium-vector/light-bulb-icon-energy-thinking-symbol-creative-idea-inspiration-concept-vector-illustration_97458-1278.jpg',
   },
   {
     id: 3,
     title: 'Survey for Cookhouse',
     points: 50,
+    description: 'Please lend us your time to fill this survey for the cookhouse',
     image: 'https://img.freepik.com/premium-vector/kids-drawing-cartoon-vector-illustration-notebook-ballpoint-pen-icon-isolated_760559-868.jpg',
   },
   {
     id: 4,
     title: 'Mural Design Competition',
     points: 100,
+    description: 'Design a mural for the mural wall at the front gate',
     image: 'https://nus.edu.sg/osa/images/default-source/default-album/dsc_7539.jpg?sfvrsn=3d2adc09_0',
   },
 ];
