@@ -44,11 +44,11 @@ Additional Financial functions
 
 ### Demo Account details
 
-User testing account : user
+- User testing account : user
 
-Admin testing account : admin
+- Admin testing account : admin
 
-Testing password : password
+- Testing password : password
 
 
 ### Setting up locally (Not Recommended)
